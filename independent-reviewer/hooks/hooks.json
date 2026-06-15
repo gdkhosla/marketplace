@@ -1,0 +1,16 @@
+{
+    "hooks": {
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "[ -z \"$FINALLY_CODE_REVIEW\" ] && FINALLY_CODE_REVIEW=1 claude -p \"Review all code changes since the last git commit (run git diff HEAD and include untracked files). Report bugs, logic errors, security issues, and quality concerns grouped by severity, each with file:line references.\" --model haiku > planning/REVIEW.md 2>&1 || true",
+            "timeout": 300,
+            "statusMessage": "Running code review (haiku)..."
+          }
+        ]
+      }
+    ]
+  }
+}
